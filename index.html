@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecretBooks</title>
+
+  <!-- Fonte fofa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>SecretBooks</h1>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#biblioteca">Biblioteca</a>
+      <a href="#morse">Conversor Morse</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </header>
+
+  <!-- Página Inicial -->
+  <section id="home">
+    <h2>Bem-vinda ao SecretBooks</h2>
+    <p>Descubra livros incríveis e experimente a magia do código Morse!</p>
+  </section>
+
+  <!-- Biblioteca -->
+  <section id="biblioteca">
+    <h2>Biblioteca</h2>
+    <div class="livros">
+      <div class="livro">
+        <img src="images/capa1.jpg" alt="Capa do Livro">
+        <h3>Livro Exemplo 1</h3>
+        <p>Autor: Fulano</p>
+        <p>Uma breve resenha do livro que desperta a curiosidade.</p>
+      </div>
+      <div class="livro">
+        <img src="images/capa2.jpg" alt="Capa do Livro">
+        <h3>Livro Exemplo 2</h3>
+        <p>Autor: Ciclano</p>
+        <p>Outra resenha interessante sobre este livro especial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conversor Morse -->
+  <section id="morse">
+    <h2>Conversor de Código Morse</h2>
+    <textarea id="textoInput" placeholder="Digite aqui..."></textarea><br>
+    <label><input type="radio" name="tipo" value="texto" checked> Texto → Morse</label>
+    <label><input type="radio" name="tipo" value="morse"> Morse → Texto</label><br>
+    <button onclick="converterMorse()">Converter</button>
+    <p>Resultado:</p>
+    <textarea id="resultado" readonly></textarea>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <h2>Sobre o Projeto</h2>
+    <p>O SecretBooks combina literatura e tecnologia, permitindo que os usuários explorem livros e se divirtam codificando mensagens em Morse. Experimente, descubra e compartilhe sua paixão por livros!</p>
+  </section>
+
+  <footer>
+    <p>SecretBooks &copy; 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
