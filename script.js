@@ -1,66 +1,71 @@
-// Mapeamento Morse
-const morseCode = {
-  "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.", "G": "--.", "H": "....",
-  "I": "..", "J": ".---", "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---",
-  "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-", "U": "..-", "V": "...-",
-  "W": ".--", "X": "-..-", "Y": "-.--", "Z": "--..",
-  "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....",
-  "6": "-....", "7": "--...", "8": "---..", "9": "----.", "0": "-----",
-  " ": "/"
+const tabelaMorse = {
+  "a": ".-","b": "-...","c": "-.-.","d": "-..","e": ".",
+  "f": "..-.","g": "--.","h": "....","i": "..","j": ".---",
+  "k": "-.-","l": ".-..","m": "--","n": "-.","o": "---",
+  "p": ".--.","q": "--.-","r": ".-.","s": "...","t": "-",
+  "u": "..-","v": "...-","w": ".--","x": "-..-","y": "-.--",
+  "z": "--..",
+  "0":"-----","1":".----","2":"..---","3":"...--","4":"....-",
+  "5":".....","6":"-....","7":"--...","8":"---..","9":"----.",
+  " ":"/"
 };
 
-// Mapa inverso Morse → Texto
-const textCode = Object.fromEntries(Object.entries(morseCode).map(([k,v]) => [v,k]));
+// Unidade de tempo em ms
+const unidade = 200;
 
-// Função para tocar beep
-function tocarBeep(duracao) {
-  return new Promise(resolve => {
-    const beep = new Audio('sounds/censor-beep-1.mp3'); // nome correto
-    beep.play();
-    setTimeout(resolve, duracao);
-  });
-}
+function converterMorse() {
+  const textoInput = document.getElementById("textoInput").value;
+  const tipo = document.querySelector('input[name="tipo"]:checked').value;
+  const resultado = document.getElementById("resultado");
 
-// Função para converter texto → Morse com atualização em tempo real
-async function textToMorseComSom(text) {
-  text = text.toUpperCase();
-  const resultadoElement = document.getElementById("resultado");
-  resultadoElement.value = ""; // limpa antes de começar
-  let resultado = "";
-
-  for (let char of text) {
-    const morseChar = morseCode[char] || '';
-    
-    for (let symbol of morseChar) {
-      resultado += symbol; // adiciona símbolo
-      resultadoElement.value = resultado; // atualiza textarea
-
-      if (symbol === ".") await tocarBeep(200);
-      else if (symbol === "-") await tocarBeep(600);
-
-      await new Promise(r => setTimeout(r, 200)); // pausa entre símbolos
-    }
-
-    resultado += " "; // espaço entre letras
-    resultadoElement.value = resultado; // atualiza textarea
-    await new Promise(r => setTimeout(r, 400)); // pausa entre letras
+  if(tipo === "texto") {
+    let morse = textoInput.toLowerCase().split("").map(c => tabelaMorse[c] || "").join(" ");
+    resultado.value = ""; // limpa o textarea
+    tocarMorseDigitando(morse);
+  } else {
+    // Morse → Texto
+    let texto = textoInput.split(" ").map(c => {
+      for(let key in tabelaMorse){
+        if(tabelaMorse[key] === c) return key;
+      }
+      return "";
+    }).join("");
+    resultado.value = texto;
   }
 }
 
-// Função para converter Morse → Texto (sem som)
-function morseParaTexto(morse) {
-  return morse.split(' ').map(code => textCode[code] || '').join('');
-}
+function tocarMorseDigitando(morse) {
+  const beep = document.getElementById("beepAudio");
+  const resultado = document.getElementById("resultado");
+  let delay = 0;
 
-// Função chamada pelo botão
-function converterMorse() {
-  const input = document.getElementById("textoInput").value;
-  const tipo = document.querySelector('input[name="tipo"]:checked').value;
+  for (let i = 0; i < morse.length; i++) {
+    const simbolo = morse[i];
 
-  if (tipo === "texto") {
-    textToMorseComSom(input); // texto e beep em tempo real
-  } else {
-    const resultado = morseParaTexto(input);
-    document.getElementById("resultado").value = resultado;
- }
+    if (simbolo === ".") {
+      setTimeout(() => {
+        beep.currentTime = 0;
+        beep.play();
+        resultado.value += ".";
+      }, delay);
+      delay += unidade * 2; // ponto + pausa
+    } else if (simbolo === "-") {
+      setTimeout(() => {
+        beep.currentTime = 0;
+        beep.play();
+        resultado.value += "-";
+      }, delay);
+      delay += unidade * 4; // traço + pausa
+    } else if (simbolo === " ") {
+      setTimeout(() => {
+        resultado.value += " ";
+      }, delay);
+      delay += unidade * 3; // pausa entre letras
+    } else if (simbolo === "/") {
+      setTimeout(() => {
+        resultado.value += " / ";
+      }, delay);
+      delay += unidade * 7; // pausa entre palavras
+    }
+  }
 }
