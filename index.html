@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Cabeçalho -->
   <header>
     <h1>SecretBooks</h1>
@@ -26,50 +27,101 @@
 
   <!-- Página Inicial -->
   <section id="home">
-    <h2>Bem-vinda ao SecretBooks</h2>
-    <p>Descubra livros incríveis e experimente a magia do código Morse!</p>
+    <div class="texto-quadrado">
+      <h2>Bem-vinda ao SecretBooks</h2>
+      <p>
+        O SecretBooks é um espaço destinado à descoberta e apreciação de obras literárias cuidadosamente selecionadas. Cada livro presente em nossa biblioteca oferece narrativas capazes de inspirar, emocionar e provocar reflexão.
+        Nosso objetivo é proporcionar aos usuários uma experiência enriquecedora, permitindo não apenas a leitura, mas também a interação com o conteúdo. Por meio da funcionalidade de codificação em código Morse, é possível transformar palavras em mensagens secretas, unindo criatividade, tecnologia e literatura de maneira inovadora.
+        Explore resenhas detalhadas, descubra novos títulos, organize seus livros favoritos e envolva-se em uma jornada literária que combina tradição e modernidade, sempre valorizando a riqueza da leitura e a magia das histórias.
+      </p>
+    </div>
   </section>
 
   <!-- Biblioteca -->
   <section id="biblioteca">
     <h2>Biblioteca</h2>
-    <div class="livros">
-      <div class="livro">
+    <div class="livros" id="livrosContainer">
+
+      <!-- Livro 1 -->
+      <div class="livro" data-id="1">
         <img src="images/capa1.jpg" alt="Capa do Livro">
-        <h3>Livro Exemplo 1</h3>
-        <p>Autor: Fulano</p>
-        <p>Uma breve resenha do livro que desperta a curiosidade.</p>
+        <h3>Segredos da Lua</h3>
+        <p class="autor">por Aurora Lys</p>
+        <button class="detalhes-btn">Ver mais detalhes</button>
+        <div class="resenha-livro" style="display:none;">
+          <p>Uma narrativa envolvente que revela segredos escondidos no coração humano. Cada capítulo desperta a curiosidade e conduz o leitor por caminhos inesperados e poéticos.</p>
+        </div>
       </div>
-      <div class="livro">
+
+      <!-- Livro 2 -->
+      <div class="livro" data-id="2">
         <img src="images/capa2.jpg" alt="Capa do Livro">
-        <h3>Livro Exemplo 2</h3>
-        <p>Autor: Ciclano</p>
-        <p>Outra resenha interessante sobre este livro especial.</p>
+        <h3>Jardim das Estrelas</h3>
+        <p class="autor">por Caio Verdan</p>
+        <button class="detalhes-btn">Ver mais detalhes</button>
+        <div class="resenha-livro" style="display:none;">
+          <p>Uma obra que combina magia e reflexão, conduzindo o leitor por uma viagem entre sonhos e realidade, com uma narrativa delicada e cativante.</p>
+        </div>
       </div>
+
+      <!-- Livro 3 -->
+      <div class="livro" data-id="3">
+        <img src="images/capa3.jpg" alt="Capa do Livro">
+        <h3>O Mistério do Relógio</h3>
+        <p class="autor">por Helena Marlowe</p>
+        <button class="detalhes-btn">Ver mais detalhes</button>
+        <div class="resenha-livro" style="display:none;">
+          <p>Uma história de suspense e descobertas, onde cada detalhe é uma pista para desvendar um enigma que prende a atenção do leitor do início ao fim.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Conversor Morse -->
   <section id="morse">
-    <h2>Conversor de Código Morse</h2>
-    <textarea id="textoInput" placeholder="Digite aqui..."></textarea><br>
-    <label><input type="radio" name="tipo" value="texto" checked> Texto → Morse</label>
-    <label><input type="radio" name="tipo" value="morse"> Morse → Texto</label><br>
-    <button onclick="converterMorse()">Converter</button>
-    <p>Resultado:</p>
-    <textarea id="resultado" readonly></textarea>
+    <div class="texto-quadrado">
+      <h2>Conversor de Código Morse</h2>
+      <p>
+        Transforme suas palavras em código Morse ou decodifique mensagens secretas. Uma maneira divertida e interativa de unir literatura e tecnologia, explorando o poder das letras e símbolos.
+      </p>
+      <textarea id="textoInput" placeholder="Digite aqui..."></textarea><br>
+      <label><input type="radio" name="tipo" value="texto" checked> Texto → Morse</label>
+      <label><input type="radio" name="tipo" value="morse"> Morse → Texto</label><br>
+      <button class="converter-btn" onclick="converterMorse()">Converter</button>
+      <p>Resultado:</p>
+      <textarea id="resultado" readonly></textarea>
+    </div>
   </section>
 
   <!-- Sobre -->
   <section id="sobre">
-    <h2>Sobre o Projeto</h2>
-    <p>O SecretBooks combina literatura e tecnologia, permitindo que os usuários explorem livros e se divirtam codificando mensagens em Morse. Experimente, descubra e compartilhe sua paixão por livros!</p>
+    <div class="texto-quadrado">
+      <h2>Sobre o SecretBooks</h2>
+      <p>
+        O SecretBooks é um ambiente dedicado à apreciação da literatura e à integração da tecnologia de maneira harmoniosa. O site oferece aos usuários a oportunidade de explorar resenhas detalhadas de diversos livros, registrar suas obras favoritas e organizar sua própria biblioteca digital de forma personalizada.
+        Além disso, o SecretBooks proporciona uma experiência interativa através da codificação e decodificação de mensagens em código Morse, permitindo que os usuários combinem leitura e programação de maneira inovadora. Cada recurso do site foi concebido para valorizar o prazer da leitura e estimular a curiosidade intelectual, oferecendo um espaço seguro e acolhedor para quem busca novas histórias e descobertas literárias.
+        Nossa missão é tornar a leitura mais envolvente e significativa, conectando usuários a livros que despertam emoções, reflexão e inspiração. Ao unir literatura, tecnologia e interatividade, o SecretBooks busca criar uma experiência única, onde cada visitante pode descobrir, registrar e compartilhar sua própria jornada literária.
+      </p>
+    </div>
   </section>
 
   <footer>
     <p>SecretBooks &copy; 2025</p>
   </footer>
 
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-conteudo">
+      <span id="fecharModal">&times;</span>
+      <img id="modalImg" src="" alt="Capa do livro">
+      <h3 id="modalTitulo"></h3>
+      <p id="modalAutor"></p>
+      <p id="modalResenha"></p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+<audio id="beepAudio" src="sounds/censor-beep-1.mp3"></audio>
 </body>
 </html>
