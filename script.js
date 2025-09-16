@@ -34,7 +34,6 @@ const tabelaMorse = {
   "5":".....","6":"-....","7":"--...","8":"---..","9":"----.",
   " ":"/"
 };
-
 const unidade = 200; // tempo base em ms
 
 function converterMorse() {
