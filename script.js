@@ -1,3 +1,28 @@
+// ==========================
+// Mostrar/Ocultar resenhas
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const botoes = document.querySelectorAll(".detalhes-btn");
+
+  botoes.forEach(botao => {
+    botao.addEventListener("click", () => {
+      const livro = botao.closest(".livro");
+      const resenha = livro.querySelector(".resenha-livro");
+
+      if (resenha.style.display === "none" || resenha.style.display === "") {
+        resenha.style.display = "block";
+        botao.textContent = "Ocultar detalhes";
+      } else {
+        resenha.style.display = "none";
+        botao.textContent = "Ver mais detalhes";
+      }
+    });
+  });
+});
+
+// ==========================
+// Conversor de Código Morse
+// ==========================
 const tabelaMorse = {
   "a": ".-","b": "-...","c": "-.-.","d": "-..","e": ".",
   "f": "..-.","g": "--.","h": "....","i": "..","j": ".---",
@@ -10,8 +35,7 @@ const tabelaMorse = {
   " ":"/"
 };
 
-// Unidade de tempo em ms
-const unidade = 200;
+const unidade = 200; // tempo base em ms
 
 function converterMorse() {
   const textoInput = document.getElementById("textoInput").value;
@@ -20,10 +44,9 @@ function converterMorse() {
 
   if(tipo === "texto") {
     let morse = textoInput.toLowerCase().split("").map(c => tabelaMorse[c] || "").join(" ");
-    resultado.value = ""; // limpa o textarea
+    resultado.value = ""; 
     tocarMorseDigitando(morse);
   } else {
-    // Morse → Texto
     let texto = textoInput.split(" ").map(c => {
       for(let key in tabelaMorse){
         if(tabelaMorse[key] === c) return key;
@@ -48,24 +71,24 @@ function tocarMorseDigitando(morse) {
         beep.play();
         resultado.value += ".";
       }, delay);
-      delay += unidade * 2; // ponto + pausa
+      delay += unidade * 2;
     } else if (simbolo === "-") {
       setTimeout(() => {
         beep.currentTime = 0;
         beep.play();
         resultado.value += "-";
       }, delay);
-      delay += unidade * 4; // traço + pausa
+      delay += unidade * 4;
     } else if (simbolo === " ") {
       setTimeout(() => {
         resultado.value += " ";
       }, delay);
-      delay += unidade * 3; // pausa entre letras
+      delay += unidade * 3;
     } else if (simbolo === "/") {
       setTimeout(() => {
         resultado.value += " / ";
       }, delay);
-      delay += unidade * 7; // pausa entre palavras
+      delay += unidade * 7;
     }
   }
 }
