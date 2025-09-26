@@ -9,6 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Menu do cabeçalho */
+    header nav {
+      display: flex;              /* coloca os links em linha */
+      justify-content: flex-start; /* alinha no canto esquerdo; use flex-end pro canto direito */
+      gap: 20px;                  /* espaçamento entre as abas */
+      padding: 10px 0;            /* deixa um espacinho em cima e embaixo */
+    }
+
+    /* Mantém o estilo do site, só remove sublinhado padrão dos links */
+    header nav a {
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
   <!-- Cabeçalho -->
@@ -105,7 +119,7 @@
         </div>
       </div>
 
-      <!-- Novo Livro 7 -->
+      <!-- Livro 7 -->
       <div class="livro" data-id="7">
         <img src="imagesharry_potter.jpeg" alt="Harry Potter e a Pedra Filosofal">
         <h3>Harry Potter e a Pedra Filosofal</h3>
@@ -116,7 +130,7 @@
         </div>
       </div>
 
-      <!-- Novo Livro 8 -->
+      <!-- Livro 8 -->
       <div class="livro" data-id="8">
         <img src="imagescrepusculo.jpeg" alt="Crepúsculo">
         <h3>Crepúsculo</h3>
@@ -127,7 +141,7 @@
         </div>
       </div>
 
-      <!-- Novo Livro 9 -->
+      <!-- Livro 9 -->
       <div class="livro" data-id="9">
         <img src="imagesorgulho_preconceito.jpeg" alt="Orgulho e Preconceito">
         <h3>Orgulho e Preconceito</h3>
@@ -138,7 +152,7 @@
         </div>
       </div>
 
-      <!-- Novo Livro 10 -->
+      <!-- Livro 10 -->
       <div class="livro" data-id="10">
         <img src="imagesmemorias_bras_cubas.jpeg" alt="Memórias Póstumas de Brás Cubas">
         <h3>Memórias Póstumas de Brás Cubas</h3>
